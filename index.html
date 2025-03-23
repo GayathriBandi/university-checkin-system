@@ -1,0 +1,38 @@
+<!-- Save as university_checkin.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>University Check In/Out</title>
+</head>
+<body>
+  <h2>Check-In/Check-Out System</h2>
+  <input type="text" id="student_id" placeholder="Enter Student ID">
+  <button onclick="checkIn()">Check In</button>
+  <button onclick="checkOut()">Check Out</button>
+  <p id="result"></p>
+
+  <script>
+    let status = {};
+
+    function checkIn() {
+      const id = document.getElementById('student_id').value;
+      if (status[id] === 'in') {
+        document.getElementById('result').innerText = "Already checked in!";
+      } else {
+        status[id] = 'in';
+        document.getElementById('result').innerText = `Student ${id} checked in.`;
+      }
+    }
+
+    function checkOut() {
+      const id = document.getElementById('student_id').value;
+      if (status[id] !== 'in') {
+        document.getElementById('result').innerText = "Student not checked in yet!";
+      } else {
+        status[id] = 'out';
+        document.getElementById('result').innerText = `Student ${id} checked out.`;
+      }
+    }
+  </script>
+</body>
+</html>
